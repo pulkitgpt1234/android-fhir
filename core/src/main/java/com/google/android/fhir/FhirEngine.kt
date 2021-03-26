@@ -63,9 +63,6 @@ interface FhirEngine {
    */
   suspend fun <R : Resource> remove(clazz: Class<R>, id: String)
 
-  /** Returns the entry point for [Search]. */
-  fun search(): Search
-
   /**
    * One time sync.
    *
@@ -77,4 +74,6 @@ interface FhirEngine {
   suspend fun periodicSync(): Result
 
   fun updatePeriodicSyncConfiguration(syncConfig: PeriodicSyncConfiguration)
+
+  suspend fun <R : Resource> searchA(search: Search): List<R>
 }
